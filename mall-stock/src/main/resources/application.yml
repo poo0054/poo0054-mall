@@ -1,0 +1,25 @@
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.56.10:8848
+        namespace: 4a6b5664-8579-4d34-a6a1-cbf2576c22d0
+      config:
+        # 配置中心地址
+        server-addr: 192.168.56.10:8848
+        # 配置文件格式
+        file-extension: yml
+        # 共享配置
+        extension-configs:
+          - dataId: common-${spring.profiles.active}.yml
+            refresh: true
+        namespace: 4a6b5664-8579-4d34-a6a1-cbf2576c22d0
+
+  application:
+    name: mall-stock
+  profiles:
+    active: dev
+  config:
+    import: nacos:${spring.application.name}-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
+server:
+  port: 8081
