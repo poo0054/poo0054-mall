@@ -16,10 +16,10 @@ spring:
         namespace: 4a6b5664-8579-4d34-a6a1-cbf2576c22d0
 
   application:
-    name: mall-stock
+    name: mall-goods
   profiles:
     active: dev
   config:
     import: nacos:${spring.application.name}-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
 server:
-  port: 8082
+  port: 8081
